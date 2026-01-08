@@ -4,7 +4,7 @@ import Hero from "./components/sections/Hero";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black pb-[100vh]">
       <Navbar />
       <main>
         <Hero />
