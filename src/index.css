@@ -77,22 +77,6 @@
       opacity: 0.5;
     }
   }
-
-  /* keyframes spin */
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* utility animate-spin-slow */
-  @utility animate-spin-slow {
-    animation: spin 8s linear infinite;
-  }
-
   /* utility classes */
 
   .line-clamp-2 {
