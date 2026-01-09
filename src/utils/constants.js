@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   email: "huytdn137@gmail.com",
   location: "Thanh Xuan, Ha Noi",
   tagline: "Crafting seamless digital experiences with modern web technologies",
-  resume: "/resume.pdf",
+  resume: "/cvTDN.pdf",
   bio: [
     "I'm a passionate React developer with over 3 years of experience building web applications.",
     "My expertise spans the entire frontend ecosystem, from React and Next.js.",
