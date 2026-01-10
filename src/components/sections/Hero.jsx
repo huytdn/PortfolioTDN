@@ -80,7 +80,7 @@ const Hero = () => {
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[500px] ml-auto group">
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-[spin_8s_linear_infinite] rounded-2xl"></div>
+                  <div className="absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl"></div>
                 </div>
 
                 {/* image content */}
