@@ -17,6 +17,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+
+    const offsetTop = el.offsetTop - 60;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   const handleNavClick = (sectionId) => {
     scrollToSection(sectionId);
     setIsMenuOpen(false);
@@ -48,11 +59,19 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-base font-medium transition-all duration-300 ${
-                  activeSection === link.id
-                    ? "text-white"
-                    : "text-white/70 hover:text-white"
-                }`}
+                className={`
+                  relative text-base font-medium transition-all duration-300
+                  ${
+                    activeSection === link.id
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1
+                  after:h-[2px] after:bg-white after:w-full
+                  after:scale-x-0 after:origin-left
+                  after:transition-transform after:duration-300
+                  hover:after:scale-x-100
+                `}
               >
                 {link.label}
               </button>
@@ -96,11 +115,19 @@ const Navbar = () => {
             <button
               key={link.id}
               onClick={() => handleNavClick(link.id)}
-              className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                activeSection === link.id
-                  ? "text-white bg-white/10"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
-              }`}
+              className={`
+                relative block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300
+                ${
+                  activeSection === link.id
+                    ? "text-white bg-white/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }
+                after:content-[''] after:absolute after:left-4 after:bottom-1
+                after:h-[2px] after:bg-white after:w-[80%]
+                after:scale-x-0 after:origin-left
+                after:transition-transform after:duration-300
+                hover:after:scale-x-100
+              `}
             >
               {link.label}
             </button>

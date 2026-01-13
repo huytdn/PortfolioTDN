@@ -7,43 +7,43 @@ export const useScrollSpy = (sectionIds, offset = 100) => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + offset;
 
-      // find the current section
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
+        if (!section) continue;
 
-          if (
-            scrollPosition >= sectionTop &&
-            scrollPosition < sectionTop + sectionHeight
-          ) {
-            setActiveSection(sectionIds);
-            break;
-          }
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection((prev) =>
+            prev !== sectionIds[i] ? sectionIds[i] : prev
+          );
+          return;
         }
       }
     };
+
     handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [sectionIds, offset]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [offset]);
 
   return activeSection;
 };
 
-// sooth scroll to a section
-export const scrollToSection = (sectionIds, offset = 80) => {
-  const section = document.getElementById(sectionIds);
-  if (section) {
-    const top = section.offsetTop - offset;
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
-  }
+// smooth scroll to a section
+export const scrollToSection = (sectionId, offset = 80) => {
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+
+  const top = section.offsetTop - offset;
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
 };
